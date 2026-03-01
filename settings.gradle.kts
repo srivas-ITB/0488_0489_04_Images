@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "App03_Texts"
+rootProject.name = "App04_Images"
 include(":app")
  

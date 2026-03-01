@@ -1,4 +1,4 @@
-package com.example.app03_Texts
+package com.example.app04_Images
 
 import org.junit.Test
 

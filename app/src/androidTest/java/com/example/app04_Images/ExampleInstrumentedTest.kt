@@ -1,4 +1,4 @@
-package com.example.app03_Texts
+package com.example.app04_Images
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

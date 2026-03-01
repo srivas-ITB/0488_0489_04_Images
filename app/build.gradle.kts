@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-val bundleId = "com.example.app03_Texts"
+val bundleId = "com.example.app04_Images"
 
 android {
     namespace = bundleId
