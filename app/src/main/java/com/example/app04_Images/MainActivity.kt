@@ -17,7 +17,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SegmentedButtonDefaults.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -49,6 +54,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun MyLayout(modifier: Modifier = Modifier){
 
@@ -71,10 +77,8 @@ fun MyLayout(modifier: Modifier = Modifier){
             fontSize = 20.sp
         )
 
-        Text(
-            "Proves amb el component Image",
-            style = styleTitle
-        )
+
+        Text("Component Image", style = styleTitle )
 
         Text("Mostrar una imatge", style = styleText)
         Image(
@@ -188,9 +192,35 @@ fun MyLayout(modifier: Modifier = Modifier){
             contentScale = androidx.compose.ui.layout.ContentScale.None
         )
 
+        //Dejo un espacio para separar imagenes de iconos
+        Spacer(modifier = Modifier.height(50.dp))
+
+        Text("Component Icon", style = styleTitle )
+
+        Text("Mostrar icona", style = styleText)
+        Icon(imageVector = Icons.Default.Star,
+            contentDescription = "Icon Example" )
+
+        Text("Mostrar icona (amb tint groc)", style = styleText)
+        Icon(imageVector = Icons.Default.Star,
+            contentDescription = "Icon Example",
+            tint = Color.Yellow)
+
+        Text("Mostrar icona (amb tint blau)", style = styleText)
+        Icon(imageVector = Icons.Default.Star,
+            contentDescription = "Icon Example",
+            tint = Color.Blue)
+
+
+        // Icones que ofereix Google: https://fonts.google.com/icons
+
+        Text("Mostrar una altra icona (shopping cart)", style = styleText)
+        Icon(imageVector = Icons.Default.ShoppingCart,
+            contentDescription = "Shopping cart",
+            tint = Color.LightGray)
+
+
     }
-
-
 
 }
 
