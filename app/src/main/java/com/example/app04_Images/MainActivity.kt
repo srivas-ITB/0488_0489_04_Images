@@ -5,15 +5,23 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -44,12 +52,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyLayout(modifier: Modifier = Modifier){
 
-    Column(modifier = Modifier) {
+    Column(modifier.verticalScroll(rememberScrollState())) {
 
         //Dejo un espacio para alejar del borde superior
         Spacer(modifier = Modifier.height(50.dp))
 
-        val myStyle = TextStyle(
+        val styleTitle = TextStyle(
             color = Color.White,
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
@@ -58,15 +66,126 @@ fun MyLayout(modifier: Modifier = Modifier){
             letterSpacing = 2.sp
         )
 
-        Text(
-            "Proves amb el component Image",
-            style = myStyle
+        val styleText = TextStyle(
+            color = Color.Green,
+            fontSize = 20.sp
         )
 
+        Text(
+            "Proves amb el component Image",
+            style = styleTitle
+        )
+
+        Text("Mostrar una imatge", style = styleText)
         Image(
             painter = painterResource(id = R.drawable.ic_launcher_foreground),
             contentDescription = "Example",
             alpha = 0.5f
+        )
+
+        Text("Imatge dins un quadrat arrodonit", style = styleText)
+        Row() {
+            // Fer que l'imatge s'adapti a una forma
+            Column() {
+                Text("size 25f ", style = styleText)
+                Image(
+                    painter = painterResource(id = R.drawable.ic_launcher_background),
+                    contentDescription = "Example",
+                    modifier = Modifier.clip(RoundedCornerShape(25f))
+                )
+            }
+            Spacer(modifier = Modifier.width(10.dp))
+            Column() {
+                Text("size 50f ", style = styleText)
+                Image(
+                    painter = painterResource(id = R.drawable.ic_launcher_background),
+                    contentDescription = "Example",
+                    modifier = Modifier.clip(RoundedCornerShape(50f))
+                )
+            }
+            Spacer(modifier = Modifier.width(10.dp))
+            Column() {
+                Text("size 100f ", style = styleText)
+                Image(
+                    painter = painterResource(id = R.drawable.ic_launcher_background),
+                    contentDescription = "Example",
+                    modifier = Modifier.clip(RoundedCornerShape(100f))
+                )
+            }
+        }
+
+        Text("Imatge completament arrodonida ", style = styleText)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "Example",
+            modifier = Modifier.clip(CircleShape)
+        )
+        Text("Afegim una vora a la imatge (abans de retallar)", style = styleText)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "Example",
+            modifier = Modifier.clip(CircleShape).border(4.dp, Color.Red)
+        )
+        Text("Afegim una vora a la imatge (un cop retallada)", style = styleText)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "Example",
+            modifier = Modifier.clip(CircleShape).border(4.dp, Color.Red, CircleShape)
+        )
+
+        Text("Proves amb ContentScale (crop)", style = styleText)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "Example",
+            modifier = Modifier.clip(CircleShape)
+                .border(4.dp, Color.Red, CircleShape)
+                .width(50.dp)
+                .height(200.dp),
+            contentScale = androidx.compose.ui.layout.ContentScale.Crop
+        )
+
+        Text("Proves amb ContentScale (FillHeight)", style = styleText)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "Example",
+            modifier = Modifier.clip(CircleShape)
+                .border(4.dp, Color.Red, CircleShape)
+                .width(50.dp)
+                .height(200.dp),
+            contentScale = androidx.compose.ui.layout.ContentScale.FillHeight
+        )
+
+        Text("Proves amb ContentScale (FillBounds)", style = styleText)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "Example",
+            modifier = Modifier.clip(CircleShape)
+                .border(4.dp, Color.Red, CircleShape)
+                .width(50.dp)
+                .height(200.dp),
+            contentScale = androidx.compose.ui.layout.ContentScale.FillBounds
+        )
+
+        Text("Proves amb ContentScale (Inside)", style = styleText)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "Example",
+            modifier = Modifier.clip(CircleShape)
+                .border(4.dp, Color.Red, CircleShape)
+                .width(50.dp)
+                .height(200.dp),
+            contentScale = androidx.compose.ui.layout.ContentScale.Inside
+        )
+
+        Text("Proves amb ContentScale (None)", style = styleText)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "Example",
+            modifier = Modifier.clip(CircleShape)
+                .border(4.dp, Color.Red, CircleShape)
+                .width(50.dp)
+                .height(200.dp),
+            contentScale = androidx.compose.ui.layout.ContentScale.None
         )
 
     }
@@ -75,10 +194,6 @@ fun MyLayout(modifier: Modifier = Modifier){
 
 }
 
-@Composable
-fun Column(content: @Composable () -> Unit) {
-    TODO("Not yet implemented")
-}
 
 
 @Preview(showBackground = true)
