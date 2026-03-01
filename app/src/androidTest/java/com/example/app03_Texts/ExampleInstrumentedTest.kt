@@ -1,4 +1,4 @@
-package com.example.app02_constraintlayout
+package com.example.app03_Texts
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

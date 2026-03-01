@@ -1,2 +1,2 @@
-# App 02 Constraint Layout
-- Evolució de l'App 01, ara amb Constraint Layout
+# App 03 Texts
+- Evolució de les Apps 01 i 02 per jugar amb el component Text

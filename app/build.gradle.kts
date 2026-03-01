@@ -3,8 +3,10 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+val bundleId = "com.example.app03_Texts"
+
 android {
-    namespace = "com.example.app02_constraintlayout"
+    namespace = bundleId
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -12,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.app01_helloandroid"
+        applicationId = bundleId
         minSdk = 24
         targetSdk = 36
         versionCode = 1

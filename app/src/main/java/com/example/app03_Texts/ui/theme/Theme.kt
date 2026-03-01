@@ -1,6 +1,5 @@
-package com.example.app02_constraintlayout.ui.theme
+package com.example.app03_Texts.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -34,7 +33,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun App02_ConstraintLayout_Theme(
+fun MyApp_Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
